@@ -1,0 +1,110 @@
+# Node.js
+client/node_modules
+server/node_modules
+server/.env
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Logs
+logs/
+*.log
+logs/**/*.log
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Build directories
+dist/
+build/
+
+# Production
+.env
+.env.local
+.env.*.local
+
+# AngularJS specific
+.angular/
+.angular/cache
+.angular-cli.json
+.angular.json
+.angular-version.json
+coverage/
+.sass-cache/
+.tmp/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Optional jshint cache
+.jshintignore
+.jshintrc
+
+# Optional runtime data
+.pids
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.lcov-report/
+
+# Optional test data
+*.test.js
+*.spec.js
+*.spec.ts
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Mac files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows files
+Thumbs.db
+ehthumbs.db
+
+# Microsoft Office temp files
+~$*
+
+# Intellij files
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# Temporary files
+*.swp
+*~
+.project
+.settings/
+.metadata/
+.classpath
+.c9/
+*.min.js
+*.map
