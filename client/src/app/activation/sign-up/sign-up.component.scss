@@ -18,8 +18,9 @@ body {
 }
 .login-image {
     flex: 1;
-    background: url('../../../assets/login_img.jpeg') no-repeat center center;
+    background: url('../../../assets/register_img.jpeg') no-repeat center center;
     background-size: cover;
+    transform: scaleX(-1);
 }
 .login-form {
     flex: 1;
