@@ -17,7 +17,7 @@ export const getAllUser = async(req,res,next)=>{
 
 export const signup = async(req,res,next)=>{
     const {name,email,password} = req.body;
-    
+    console.log("Request: ",req.body);
 
     let existingUser;
     try {

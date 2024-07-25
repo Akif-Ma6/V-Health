@@ -1,9 +1,12 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:vhealth/components/my_button.dart';
 import 'package:vhealth/components/my_textfield.dart';
 import 'package:vhealth/components/space.dart';
 import 'package:vhealth/pages/register_page.dart';
-
+import '../services/ApiUrls/api_urls.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -69,11 +72,36 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   MyButton(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>  HomePage(),
-                        ));
-                      },
+                      onTap: () async {
+                      try {
+                        final response = await http.post(
+                          Uri.parse(ApiUrls.base_url + ApiUrls.login),
+                          headers: {'Content-Type': 'application/json'},
+                          body: jsonEncode({
+                            'email': emailController.text,
+                            'password': passwordController.text,
+                          }),
+                        );
+
+                        if (response.statusCode == 200) {
+                          // Handle success
+                          log('Success: ${response.body}');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(
+                                 
+                                ),
+                              ));
+                        } else {
+                          // Handle server errors
+                          log('Server Error: ${response.statusCode} ${response.body}');
+                        }
+                      } catch (e) {
+                        // Handle network errors or other exceptions
+                        log('Network Error: $e');
+                      }
+                    },
                       text: "Sign In"),
                   const SizedBox(height: 25),
                   Row(
