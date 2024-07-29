@@ -8,7 +8,7 @@ import { ActivationRoutingModule } from './activation-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    ActivationRoutingModule
+    ActivationRoutingModule,
   ]
 })
 export class ActivationModule { }

@@ -1,5 +1,6 @@
 import User from '../models/User'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 export const getAllUser = async(req,res,next)=>{
     let users;
@@ -16,8 +17,7 @@ export const getAllUser = async(req,res,next)=>{
 }
 
 export const signup = async(req,res,next)=>{
-    const {name,email,password} = req.body;
-    console.log("Request: ",req.body);
+    const {name,email,password,isCoach,institution} = req.body;
 
     let existingUser;
     try {
@@ -36,7 +36,9 @@ export const signup = async(req,res,next)=>{
         name:name,
         email:email,
         password:hashPswd,
-        blogs:[]
+        blogs:[],
+        isCoach:isCoach,
+        institution:institution
     })
 
 
@@ -63,5 +65,21 @@ export const login = async(req,res,next)=>{
     if(!isPasswordCorrect){
         return res.status(400).json({message:"Incorrect password"})
     }
-    return res.status(200).json({message:"Login successful."})
+    //login success
+    const token = jwt.sign({
+        id:userExist._id,
+        name:userExist.name,
+        email:userExist.email
+    },"secret",{
+        expiresIn:"1h"
+    });
+    const data = {
+        id:userExist._id,
+        name:userExist.name,
+        email:userExist.email,
+        isCoach:userExist.isCoach,
+        institution:userExist.institution,
+        token:token
+    }
+    return res.status(200).json({data})
 }
