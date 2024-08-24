@@ -83,6 +83,8 @@
 
 // Import Angular Material and setup theme
 @use '@angular/material' as mat;
+@import 'ngx-toastr/toastr';
+
 
 // Include the common styles for Angular Material
 @include mat.core();

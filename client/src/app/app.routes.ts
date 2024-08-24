@@ -7,5 +7,9 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('./activation/activation.module').then(m => m.ActivationModule)
     },
+    {
+        path: 'user',
+        loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule)
+    },
 ];
 

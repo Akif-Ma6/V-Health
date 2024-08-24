@@ -3,6 +3,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-sign-in',
@@ -12,8 +13,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './sign-in.component.scss'
 })
 export class SignInComponent{
+toaster = inject(ToastrService)
+authService = inject(AuthService)
 
-  authService = inject(AuthService)
 
 formBuilder = inject(FormBuilder);
 loginForm = this.formBuilder.group({
@@ -24,16 +26,19 @@ loginForm = this.formBuilder.group({
 login(){
   this.authService.loginUser(this.loginForm.value).subscribe({
     next:(result:any)=>{
-      console.log("Login result: ",result)
-      if(result.data){
-      console.log("Login is Successful.")
-      }else{
-        console.log("Something went wrong")
-      }
+        console.log("Login result: ",result)
+      this.toaster.success("Login Success","Success");
+      
     },
-    error:(err:any)=>{},
+    error:(err:any)=>{
+      this.toaster.error("Login Failed","Failed");
+
+    },
     complete:()=>{}
   })
+}
+
+showSuccess() {
 }
   
 }

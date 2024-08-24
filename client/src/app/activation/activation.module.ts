@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActivationRoutingModule } from './activation-routing.module';
 
 
+
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     ActivationRoutingModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class ActivationModule { }
