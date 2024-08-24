@@ -6,6 +6,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,6 +20,7 @@ export class SignInComponent {
   toaster = inject(ToastrService)
   authService = inject(AuthService)
   cookieService = inject(CookieService)
+  router = inject(Router)
 
 
   formBuilder = inject(FormBuilder);
@@ -33,6 +35,7 @@ export class SignInComponent {
         console.log("Login result: ", result.data.token)
         this.cookieService.set('session-token', result.data.token);
         this.toaster.success("Login Success", "Success");
+        this.router.navigate(['/auth/home'])
       },
       error: (err: any) => {
         this.toaster.error("Login Failed", "Failed");
