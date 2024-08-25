@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AppsRoutingModule } from './apps-routing.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
-    AppsRoutingModule
+    AppsRoutingModule,
   ]
 })
 export class AppsModule { }

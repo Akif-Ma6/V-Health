@@ -1,5 +1,7 @@
-import { Routes,RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
+
+import { BaseComponent } from './layout/base/base.component';
 
 export const routes: Routes = [
 
@@ -9,7 +11,21 @@ export const routes: Routes = [
     },
     {
         path: 'auth',
-        loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule)
+        component: BaseComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule)
+
+            }
+        ]
     },
 ];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'top'})],
+    exports: [RouterModule]
+})
+
+export class AppsRoutingModule { }
 
