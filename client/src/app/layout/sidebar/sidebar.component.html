@@ -1,11 +1,11 @@
-<aside class="sidebar" [class.collapsed]="isCollapsed" style="margin-top: 80px">
+<aside class="sidebar" [class.collapsed]="isCollapsed">
   <button class="sidebar-toggle" style="background-color: red;" (click)="toggleSidebar()">
     <span *ngIf="isCollapsed">☰</span>
     <span *ngIf="!isCollapsed">×</span>
   </button>
-  <div class="sidebar-header" *ngIf="!isCollapsed">
+  <!-- <div class="sidebar-header" *ngIf="!isCollapsed">
     <h2>My App</h2>
-  </div>
+  </div> -->
   <nav class="sidebar-nav" *ngIf="!isCollapsed">
     <ul>
       <li><a routerLink="/main" routerLinkActive="active">Main</a></li>
