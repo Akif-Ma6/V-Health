@@ -1,6 +1,9 @@
 import { Component,inject } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { CookieService } from 'ngx-cookie-service';
+
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -9,13 +12,13 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-
+  cookieService = inject(CookieService)
   router = inject(Router)
 
   logout() {
-    // Clear user session or authentication token
-    // Redirect to login page or home page
-    this.router.navigate(['/login']); // Adjust the route as needed
+    this.cookieService.delete('session-token')
+    this.cookieService.delete('user-id');
+    this.router.navigate(['/']); // Adjust the route as needed
   }
 
   goToProfile() {
