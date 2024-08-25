@@ -1,1 +1,16 @@
-<p>navbar works!</p>
+<!-- src/app/navbar/navbar.component.html -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-left">
+      <img src="assets/logo.png" alt="Logo" class="navbar-logo"> <!-- Adjust path as needed -->
+    </div>
+    <div class="navbar-right">
+      <input type="text" placeholder="Search..." class="navbar-search">
+      <button (click)="logout()" class="navbar-logout">Logout</button>
+      <div class="navbar-profile">
+        <img src="assets/profile-icon.png" alt="Profile" class="navbar-profile-icon" (click)="goToProfile()">
+        <span class="navbar-profile-name">User Name</span> <!-- You can dynamically set this -->
+      </div>
+    </div>
+  </div>
+</nav>

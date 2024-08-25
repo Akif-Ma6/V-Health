@@ -1,1 +1,16 @@
-<p>sidebar works!</p>
+<aside class="sidebar" [class.collapsed]="isCollapsed" style="margin-top: 80px">
+  <button class="sidebar-toggle" style="background-color: red;" (click)="toggleSidebar()">
+    <span *ngIf="isCollapsed">☰</span>
+    <span *ngIf="!isCollapsed">×</span>
+  </button>
+  <div class="sidebar-header" *ngIf="!isCollapsed">
+    <h2>My App</h2>
+  </div>
+  <nav class="sidebar-nav" *ngIf="!isCollapsed">
+    <ul>
+      <li><a routerLink="/main" routerLinkActive="active">Main</a></li>
+      <li><a routerLink="/workout" routerLinkActive="active">Workout</a></li>
+      <li><a routerLink="/pages" routerLinkActive="active">Pages</a></li>
+    </ul>
+  </nav>
+</aside>
